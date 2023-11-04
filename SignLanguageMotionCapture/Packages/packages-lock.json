@@ -27,6 +27,32 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.demoteam.digital-human": {
+      "version": "https://github.com/Unity-Technologies/com.unity.demoteam.digital-human.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.burst": "1.2.3",
+        "com.unity.collections": "0.1.1-preview",
+        "com.unity.mathematics": "1.1.0",
+        "com.unity.render-pipelines.high-definition": "7.3.1",
+        "com.unity.timeline": "1.2.17"
+      },
+      "hash": "d4ee1039cdc2419fb0888fc3fab09477c4be3221"
+    },
+    "com.unity.demoteam.hair": {
+      "version": "https://github.com/Unity-Technologies/com.unity.demoteam.hair.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.burst": "1.4.1",
+        "com.unity.collections": "0.15.0-preview.21",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.render-pipelines.core": "10.2.2",
+        "com.unity.shadergraph": "10.2.2"
+      },
+      "hash": "46a8b132c30f07fba0fc7707f5f4d9dcfb24dbf7"
+    },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,
@@ -54,6 +80,17 @@
         "com.unity.testtools.codecoverage": "1.2.4"
       }
     },
+    "com.unity.formats.alembic": {
+      "version": "2.3.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0",
+        "com.unity.modules.unityanalytics": "1.0.0",
+        "com.unity.modules.cloth": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ide.rider": {
       "version": "3.0.25",
       "depth": 1,
@@ -69,6 +106,19 @@
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.live-capture": {
+      "version": "3.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.timeline": "1.6.4",
+        "com.unity.ugui": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
@@ -124,9 +174,9 @@
       }
     },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "15.0.7",
-      "depth": 1,
-      "source": "builtin",
+      "version": "file:com.unity.render-pipelines.high-definition-config",
+      "depth": 0,
+      "source": "embedded",
       "dependencies": {
         "com.unity.render-pipelines.core": "15.0.7"
       }
@@ -185,7 +235,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.8.2",
+      "version": "1.8.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {

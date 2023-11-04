@@ -1,10 +1,15 @@
 {
   "dependencies": {
     "com.unity.collab-proxy": "2.2.0",
+    "com.unity.demoteam.digital-human": "https://github.com/Unity-Technologies/com.unity.demoteam.digital-human.git",
+    "com.unity.demoteam.hair": "https://github.com/Unity-Technologies/com.unity.demoteam.hair.git",
     "com.unity.feature.development": "1.0.2",
+    "com.unity.formats.alembic": "2.3.4",
+    "com.unity.live-capture": "3.0.0",
     "com.unity.render-pipelines.high-definition": "15.0.7",
+    "com.unity.render-pipelines.high-definition-config": "15.0.7",
     "com.unity.textmeshpro": "3.0.6",
-    "com.unity.timeline": "1.8.2",
+    "com.unity.timeline": "1.8.6",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.8.0",
     "com.unity.modules.ai": "1.0.0",
