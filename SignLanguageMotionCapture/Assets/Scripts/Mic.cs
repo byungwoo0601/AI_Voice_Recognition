@@ -49,7 +49,7 @@ public class Mic : MonoBehaviour
 
             float[] cutSamples = new float[lastTime];
 
-            Array.Copy(samples, cutSamples, cutSamples.Length - 1);
+            Array.Copy(samples, cutSamples, cutSamples.Length);
 
             _recording = AudioClip.Create("Recording", cutSamples.Length, 1, recordingHZ, false);
 
@@ -93,7 +93,17 @@ public class Mic : MonoBehaviour
     }
     public void showSTT()
     {
+        if (_recording == null)
+        {
+            Debug.Log("nothing recorded");
+            return;
+        }
         StartCoroutine(PostVoice(url, byteData));
+    }
+    public void reClip()
+    {
+        AudioClip newClip = ByteArrayToAudioClip(byteData);
+        aud.clip = newClip;
     }
 private IEnumerator PostVoice(string url, byte[] data)
     {
@@ -126,5 +136,19 @@ private IEnumerator PostVoice(string url, byte[] data)
 
             Debug.Log("Voice Server responded: " + voiceRecognize.text);
         }
+    }
+    private AudioClip ByteArrayToAudioClip(byte[] audioData)
+    {
+        float[] floatData = new float[audioData.Length / 2];
+
+        for (int i = 0; i < floatData.Length; i++) 
+        {
+            floatData[i] = (float)System.BitConverter.ToInt16(audioData, i * 2) / 32768.0f;
+        }
+
+        AudioClip audioClip = AudioClip.Create("New_Recording", floatData.Length, 1, recordingHZ, false);
+        audioClip.SetData(floatData, 0);
+
+        return audioClip;
     }
 }
