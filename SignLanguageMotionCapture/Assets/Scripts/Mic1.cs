@@ -18,6 +18,7 @@ public class Mic1 : MonoBehaviour
     private byte[] byteData1;
     private string kor = "Kor";
     private string _text1;
+    private string SavePath = "Assets/";
     void Start()
     {
         microphoneID1 = Microphone.devices[0];
@@ -43,9 +44,9 @@ public class Mic1 : MonoBehaviour
         }
         Debug.Log(_recording1.length);
 
-        byteData1 = AudioClipToByteArray(_recording1);
+        //byteData1 = AudioClipToByteArray(_recording1);
 
-        PrintByteArraySize(byteData1);
+        //PrintByteArraySize(byteData1);
     }
     public void showSTT1()
     {
