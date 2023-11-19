@@ -1,42 +1,94 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using System.IO;
 using System.Net;
 using System.Text;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
-using System.Text.Json;
+using System.Collections;
 
-public class Mic3 : MonoBehaviour
+public class Record : MonoBehaviour
 {
     AudioClip record;
     AudioSource aud;
-    private string microphoneID2 = null;
+    private string microphoneID = null;
     private string path;
+    private string speechToText;
     private int recordingLengthSec1 = 30;
     private int recordingHZ1 = 44100;
+    private float timer = 0f;
+    private bool timerRunning = false;
     public Text text;
+    public Text timerText;
+    //public GameObject textScroll;
 
     void Start()
     {
         aud = GetComponent<AudioSource>();
-        microphoneID2 = Microphone.devices[0];
-        Debug.Log(microphoneID2);
+        microphoneID = Microphone.devices[0];
+        Debug.Log(microphoneID);
     }
 
+    void Update()
+    {
+        if(timerRunning)
+        {
+            timer += Time.deltaTime;
+            timerText.text = $"{timer:N2}";
+        }
+    }
     public void Rec()
     {
+        if(timerRunning == false)
+        {
+            timer = 0f;
+            Debug.Log("start recording");
+            record = Microphone.Start(microphoneID, false, recordingLengthSec1, recordingHZ1);
+            aud.clip = record;
+        }
+        else
+        {
+            if (Microphone.IsRecording(microphoneID))
+            {
+                Microphone.End(microphoneID);
+
+                Debug.Log("stop recording");
+
+                if (record == null)
+                {
+                    Debug.Log("nothing recorded");
+                    return;
+                }
+                SavWav.Save("C:\\Users\\Hojin\\Documents\\GitHub\\AI_Voice_Recognition\\SignLanguageMotionCapture\\Assets\\record", aud.clip);
+
+                path = "Assets/record.wav";
+                StartCoroutine(STT(path));
+                text.text = speechToText;
+                //textScroll.SetActive(true);
+            }
+        }
+        if(timerRunning == false)
+        {
+            timerRunning = true;
+        }
+        else
+        {
+            timerRunning = false;
+        }
+    }
+    public void startRec()
+    {
+        timer = 0f;
+        timerRunning = true;
         Debug.Log("start recording");
-        record = Microphone.Start(microphoneID2, false, recordingLengthSec1, recordingHZ1);
+        record = Microphone.Start(microphoneID, false, recordingLengthSec1, recordingHZ1);
         aud.clip = record;
     }
     public void stopRec()
     {
-        if (Microphone.IsRecording(microphoneID2))
+        timerRunning = false;
+        if (Microphone.IsRecording(microphoneID))
         {
-            Microphone.End(microphoneID2);
+            Microphone.End(microphoneID);
 
             Debug.Log("stop recording");
 
@@ -45,27 +97,13 @@ public class Mic3 : MonoBehaviour
                 Debug.Log("nothing recorded");
                 return;
             }
-            SavWav.Save("C:\\Users\\Hojin\\Documents\\GitHub\\AI_Voice_Recognition\\SignLanguageMotionCapture\\Assets\\record", aud.clip);
+            SavWav.Save("Assets/record", aud.clip);
 
             path = "Assets/record.wav";
-            APIExamSTT apiExam = new APIExamSTT();
-            text.text = apiExam.ExamSTT(path);
+            StartCoroutine(STT(path));
         }
     }
-    public void toWav()
-    {
-        SavWav.Save("C:\\Users\\Hojin\\Documents\\GitHub\\AI_Voice_Recognition\\SignLanguageMotionCapture\\Assets\\record", aud.clip);
-    }
-    public void toSTT()
-    {
-        path = "Assets/record.wav";
-        APIExamSTT apiExam = new APIExamSTT();
-        text.text = apiExam.ExamSTT(path);
-    }
-}
-public class APIExamSTT
-{
-    public string ExamSTT(string filePath)
+    private IEnumerator STT(string filePath)
     {
         FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
         byte[] fileData = new byte[fs.Length];
@@ -80,6 +118,7 @@ public class APIExamSTT
         request.Method = "POST";
         request.ContentType = "application/octet-stream";
         request.ContentLength = fileData.Length;
+
         using (Stream requestStream = request.GetRequestStream())
         {
             requestStream.Write(fileData, 0, fileData.Length);
@@ -95,7 +134,8 @@ public class APIExamSTT
 
         string pattern = "\"(\\\\\"|[^\"])*\"";
         MatchCollection matches = Regex.Matches(_text, pattern);
-        string text = matches[1].Value.Trim('"');
-        return text;
+        speechToText = matches[1].Value.Trim('"');
+
+        yield return request;
     }
 }
