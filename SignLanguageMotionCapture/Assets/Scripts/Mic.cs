@@ -158,36 +158,3 @@ private IEnumerator PostVoice(string url, byte[] data)
         return audioClip;
     }
 }
-    public class APIExamSTT
-    {
-        public void ExamSTT()
-        {
-            string FilePath = "Assets/Sample.wav";
-            FileStream fs = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
-            byte[] fileData = new byte[fs.Length];
-            fs.Read(fileData, 0, fileData.Length);
-            fs.Close();
-
-            string lang = "Kor";    // 언어 코드 ( Kor, Jpn, Eng, Chn )
-            string url = $"https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang={lang}";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Headers.Add("X-NCP-APIGW-API-KEY-ID", "zqhm1iqevf");
-            request.Headers.Add("X-NCP-APIGW-API-KEY", "fDPo0KaYMaIGRVuZQFr7SHbbK8Iu7vCnrUvsrmGd");
-            request.Method = "POST";
-            request.ContentType = "application/octet-stream";
-            request.ContentLength = fileData.Length;
-            using (Stream requestStream = request.GetRequestStream())
-            {
-                requestStream.Write(fileData, 0, fileData.Length);
-                requestStream.Close();
-            }
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream stream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-            string _text = reader.ReadToEnd();
-            stream.Close();
-            response.Close();
-            reader.Close();
-            Debug.Log(_text);
-        }
-    }

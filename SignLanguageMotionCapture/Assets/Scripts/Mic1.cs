@@ -18,7 +18,7 @@ public class Mic1 : MonoBehaviour
     private byte[] byteData1;
     private string kor = "Kor";
     private string _text1;
-    private string SavePath = "Assets/";
+    //private string SavePath = "Assets/";
     void Start()
     {
         microphoneID1 = Microphone.devices[0];
