@@ -546,81 +546,81 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body
-    second: {fileID: 2100000, guid: 22b40dd7dc9f0a04dab7d1dd6cb918cd, type: 2}
+    second: {fileID: 2100000, guid: 8e526af249278a0498ce8273e07fcc49, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eye
-    second: {fileID: 2100000, guid: eb1b31b23602fa54f96368f3f3dba7d6, type: 2}
+    second: {fileID: 2100000, guid: 023452b84affa6f43a8feea0e1c55499, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: EyeBack
-    second: {fileID: 2100000, guid: 29936f99d2fa78c4d80df99938397e5a, type: 2}
+    second: {fileID: 2100000, guid: b97b55ed446d8ed48acc18d42edf2de0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eye_reflection
-    second: {fileID: 2100000, guid: 410c40cd053f438439ff962bf48594ab, type: 2}
+    second: {fileID: 2100000, guid: 02b619845fcb6e741b4be7e71e36c491, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyebrows
-    second: {fileID: 2100000, guid: 3db7aecabbef6e5469cc575ea8fbbe25, type: 2}
+    second: {fileID: 2100000, guid: aa86a0f3e62852142bfc3a5d4cd7a828, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyelashes
-    second: {fileID: 2100000, guid: 9d8f283cd6417c84f9180953a19440f5, type: 2}
+    second: {fileID: 2100000, guid: 29c9dd3707158b2448cc0bdf81c33ce8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyeliner
-    second: {fileID: 2100000, guid: 3cf59c24b3cebfb4a9a6ee91142fbf3d, type: 2}
+    second: {fileID: 2100000, guid: b8022f4bfe3976845b403285a16c5320, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: F00_000_Hair_00_HAIR.003
-    second: {fileID: 2100000, guid: 045cb62d2d1130c4bac5562ecb01cd11, type: 2}
+    second: {fileID: 2100000, guid: ac66396422b86cb4c92dad11a754d445, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Face
-    second: {fileID: 2100000, guid: 6ece508a5f4229f49a6f501a1a4f13d9, type: 2}
+    second: {fileID: 2100000, guid: 45f47006298912f4dbec4062603b460f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Hair_head
-    second: {fileID: 2100000, guid: 4d448d0a62a6dbe4090a73728aa6b28d, type: 2}
+    second: {fileID: 2100000, guid: 35480311dac00b44e8b4aa462037a655, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Image_20.001
-    second: {fileID: 2100000, guid: 97cd0aaf127e7494d8be61f20ce61ca9, type: 2}
+    second: {fileID: 2100000, guid: 6a80b158aa19e9d4baeab1be437a4c21, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Image_20.004
-    second: {fileID: 2100000, guid: 2fd72eed875ebfe4382931bcd2f6c5fc, type: 2}
+    second: {fileID: 2100000, guid: f652a5fbd1ada3a40b2ba15ab02781ad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Image_20.005
-    second: {fileID: 2100000, guid: 35479812a2a650443ac95ed77d8f11fa, type: 2}
+    second: {fileID: 2100000, guid: f84d4855abdbaa34796fba7e50e3dd1a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: bikini
-    second: {fileID: 2100000, guid: 642994ac2c7144b43b97344fee2c8d21, type: 2}
+    second: {fileID: 2100000, guid: 99a79f6de2825ec4bb471ef12eee8b52, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mouth_inside
-    second: {fileID: 2100000, guid: 42446346c867297479be18e7beef009d, type: 2}
+    second: {fileID: 2100000, guid: 6591b6a58c1933643bb87bf9fbef044c, type: 2}
   materials:
-    materialImportMode: 1
-    materialName: 2
-    materialSearch: 2
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
