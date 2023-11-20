@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using System.Text.RegularExpressions;
 using System.Collections;
 
@@ -58,9 +59,9 @@ public class Record : MonoBehaviour
                     Debug.Log("nothing recorded");
                     return;
                 }
-                SavWav.Save("C:\\Users\\Hojin\\Documents\\GitHub\\AI_Voice_Recognition\\SignLanguageMotionCapture\\Assets\\record", aud.clip);
+                //SavWav.Save("C:\\Users\\Hojin\\Documents\\GitHub\\AI_Voice_Recognition\\SignLanguageMotionCapture\\Assets\\record", aud.clip);
 
-                path = "Assets/record.wav";
+                path = "Assets/Sample.wav";
                 StartCoroutine(STT(path));
                 text.text = speechToText;
                 //textScroll.SetActive(true);
@@ -75,6 +76,7 @@ public class Record : MonoBehaviour
             timerRunning = false;
         }
     }
+
     public void startRec()
     {
         timer = 0f;
@@ -102,6 +104,11 @@ public class Record : MonoBehaviour
             path = "Assets/record.wav";
             StartCoroutine(STT(path));
         }
+    }
+    public void testRec()
+    {
+        path = "Assets/record.wav";
+        StartCoroutine(STT(path));
     }
     private IEnumerator STT(string filePath)
     {
@@ -136,6 +143,7 @@ public class Record : MonoBehaviour
         MatchCollection matches = Regex.Matches(_text, pattern);
         speechToText = matches[1].Value.Trim('"');
 
-        yield return request;
+        yield return null;
     }
+
 }
