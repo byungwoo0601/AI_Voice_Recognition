@@ -8,10 +8,17 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 {
 	public class STS_Manager : MonoBehaviour
 	{
+		public static STS_Manager instance;
+
 		private GCStreamingSpeechRecognition_ _speechRecognition;
 
 		public Button RecordButton_1,
-						RecordButton_2;
+						RecordButton_2,
+							DeleteButton;
+
+		public GameObject Clicked_Image,
+							prefab,
+								parent;
 
 		public Text _resultText;
 
@@ -19,11 +26,16 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 		public float voiceDetectionThreshold = 0.02f;
 
-		public int record_count = 0;
-		public string temp_text;		
-
-		private void Start()
+		public string temp_Text;
+		public string get_Text;
+		public int count;
+		private void Awake()
+        {
+			instance = this;
+		}
+        private void Start()
 		{
+			count = 1;
 			_speechRecognition = GCStreamingSpeechRecognition_.Instance;
 			_speechRecognition.StreamingRecognitionStartedEvent += StreamingRecognitionStartedEventHandler;
 			_speechRecognition.StreamingRecognitionFailedEvent += StreamingRecognitionFailedEventHandler;
@@ -33,22 +45,31 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 			RecordButton_1.onClick.AddListener(StartRecordButtonOnClickHandler);
 			RecordButton_2.onClick.AddListener(StopRecordButtonOnClickHandler);
+			DeleteButton.onClick.AddListener(DeleteButtonOnClickHandler);
 
 			_speechRecognition.SetMicrophoneDevice(_speechRecognition.GetMicrophoneDevices()[0]);
 		}
-
-		private void OnDestroy()
+        private void OnDestroy()
 		{
 			_speechRecognition.InterimResultDetectedEvent -= InterimResultDetectedEventHandler;
 			_speechRecognition.FinalResultDetectedEvent -= FinalResultDetectedEventHandler;
 		}
-
+		private void DeleteButtonOnClickHandler()
+        {
+			if(Clicked_Image==null)
+			{
+				Debug.Log("오브젝트 선택 안 됐습니다.");
+			}
+			Destroy(Clicked_Image);
+			count--;
+        }
 		private void StartRecordButtonOnClickHandler()
 		{
-			if (record_count == 0) 
-            {
-				_resultText.text = string.Empty;
-            }
+			if (_resultText == null)
+			{
+				Instantiate(prefab, parent.GetComponent<Transform>());
+				Debug.Log("입력될 텍스트 오브젝트가 없어서 새로운 오브젝트를 생성하였습니다.");
+			}
 
 			List<List<string>> context = new List<List<string>>();
 
@@ -64,6 +85,11 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 				}
 			}
 
+			if (count == 0)
+			{
+				_resultText.text = string.Empty;
+			}
+
 			_speechRecognition.config.recognitionSettings.speechContexts = contexts;
 
 			_speechRecognition.StartStreamingRecognition(_speechRecognition.config.recognitionSettings);
@@ -71,9 +97,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_2.gameObject.SetActive(true);
 			RecordButton_1.gameObject.SetActive(false);
 
-			temp_text = _resultText.text;
+			temp_Text = _resultText.text;
 		}
-
 		private async void StopRecordButtonOnClickHandler()
 		{
 			await _speechRecognition.StopStreamingRecognition();
@@ -81,8 +106,9 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_1.gameObject.SetActive(true);
 			RecordButton_2.gameObject.SetActive(false);
 
-			record_count++;
-		}
+			Instantiate(prefab, parent.GetComponent<Transform>());
+			count++;
+        }
 		private void StreamingRecognitionStartedEventHandler()
 		{
 			RecordButton_2.interactable = true;
@@ -96,38 +122,21 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_2.interactable = false;
 			RecordButton_1.interactable = true;
 		}
-
 		private void StreamingRecognitionEndedEventHandler()
 		{
 			RecordButton_2.interactable = false;
 			RecordButton_1.interactable = true;
 		}
-
 		private void InterimResultDetectedEventHandler(SpeechRecognitionAlternative alternative)
 		{
-			if(record_count == 0)
-            {
-				_resultText.text = $"{alternative.Transcript}";
-			}
-            else
-			{
-				_resultText.text = $"{temp_text}\n{alternative.Transcript}";
-			}
+			_resultText.text = $"{alternative.Transcript}";
 
 			scrollRect.verticalNormalizedPosition = 0f;
 		}
-
 		private void FinalResultDetectedEventHandler(SpeechRecognitionAlternative alternative)
 		{
-			if (record_count == 0 || record_count == 1)
-			{
-				_resultText.text = $"{alternative.Transcript}";
-			}
-			else
-			{
-				_resultText.text = $"{temp_text}\n{alternative.Transcript}";
-			}
-
+			_resultText.text = $"{alternative.Transcript}";
+			
 			scrollRect.verticalNormalizedPosition = 0f;
 		}
 	}
