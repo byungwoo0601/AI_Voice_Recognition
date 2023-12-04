@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "newhumanity-406310",
+  "private_key_id": "b9a102b8bf4eda465f63859aac0e4e981a8af581",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDl3TvaR2+gBwy0\nodUDqeUUyZ9Rw/Kgx5EXD7GY3rfRQmp8WvxzXdEAsaMdGNqzgEYskj6yI7JGS4gB\n4PtSnRE9tPWDWKPAHS38g11X62wuPwtrllyDfNW1oYd6Hfwsv58XN45Se9hfSfD4\nFl9TmehvGBwr6Zm4KBDR7LH2k+rtPn2xlNFcItf50iyERfPQK6cX5jQ+o71NM+OV\nsGHq13d69iAehdRXBq47rxuhRlmrGBclsixJStuWIaALCSVEprhwvIsEfBFD0ONb\nmt37W+7Mi42eX+5MIS5SlMUf1tWvN4E7mHVP7VSiPb1SLgVAGJrv47vLmXmyzg/e\nFygG8EWZAgMBAAECggEAErr5iNKX27IfXKuwNB14s34va4X8RBIm9jpa5iJF17kh\n/LKcThlHsdcHu9P95DEQZsre7Xyfpv86HK8Uw5lVYZIYjGShaULnb6NTrJmcJdOQ\nzmpA7RzzvBpms/J0DUBrCgUGpZ1+VttrVYfbKjCJIl5UU1a0Zi9rmXOAV9+bPcwZ\nftBHU2j6XDtXcnGw2mrZpL2R0XF/5vLJKY6zszJipQtUuRXQSTadvvi9WUKOaAAd\nl9QaxNxeC2SPW2luOhnCo8TCjQqjKZTAj8UuNs18vJhCraAHDJhrrrlx4bnYUjYg\nyR9Lw3VmvYbTXFL3dytdDaTBA861VO+gIIj1HKx9RQKBgQD3bHPK99+qqr5K7xZA\nC+R/v/DGkKhUpp+h2TVPwqZwoyLU7mG1tu5X0y5MuIUPAmp4oGfFvpZ8Peeye4VV\n3FxDAcy6TO8dbTxWWf46qyF64ArTLZ7oghonc6EVpF2DGvg8ds6Xv44Yu2obgTSu\n/gS1jwr7XkwWwNY2eCKxNbv9hQKBgQDt1Pce4Ptpv5ofXGW5015dWmrTS5MON+36\npuc69PpTRXXZnYiRSpc0+rbXwPWPU75I/YJdAPwRaMKDzJLqepFY5Z+o8Cf5Qbaj\nxpOpjt+YxalOelsM7Q85DgtyENZbDKU7h1ceqc6et4t6pNfvMn5/wwI11fOtGRyH\n1hn362KqBQKBgF8z0sY5ZE2mDzyEDHquWMizETFGPg78YhYDntjG3AYhL2jhJKWn\n8sPGVV1d7ozc8BzkE6np8LtzknCByMdF2BZMXfsdWTBodLwBOqpWaLZ/+IpTVn6+\neNPPUR8jtHua6ANT76BCK6nmiyh0KdJfmW5G0QHxwbNLleE1jpvDQkeFAoGBANyt\ngOdMBrxmppF24IT+VU71uK16MGc/CjhLab7Q1P0zNFjJzZBSz96+y62CQ9fL8oIz\niCTX5wwYUnSM+71KIVeFKRJOVCj6CogIl7b69QoCTkidS6LAzCE6oPAkI2G0aBTG\nTdYL5cZrtKYGEr7F8Y6G2aQuc74n0MtRpCLgbFopAoGBALY0i+IoMw/nImsGvqD3\nZS9JRMb62oVXjL7UWkFcC9cIK38waKVf2pCrQvG5eRPceZ6dWvsDi+ah8MDtoouW\nI89j0u7gF0T7t5skpaIVp04sgLBMNOStaIjj65STqDkR9eiWfLK8rGLnwd2a9GKB\n1bhLdhbRtH7Mta/b8uvc3hi4\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-test-account@newhumanity-406310.iam.gserviceaccount.com",
+  "client_id": "118053431000581104878",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-test-account%40newhumanity-406310.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
