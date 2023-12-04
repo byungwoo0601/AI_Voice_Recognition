@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a51f4f2c93d92cb49b05a5cb1235bb43
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115172
+  packageName: Streaming Speech Recognition using Google Cloud [VR\AR\Mobile\Desktop]
+    Pro
+  packageVersion: 1.0.3
+  assetPath: Assets/FrostweepGames/StreamingSpeechRecognition/Plugins/Newtonsoft.Json/Newtonsoft.Json
+    Portable/Newtonsoft.Json.xml
+  uploadId: 551159

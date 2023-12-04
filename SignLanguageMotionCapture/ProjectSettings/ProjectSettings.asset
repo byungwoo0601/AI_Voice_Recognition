@@ -806,7 +806,22 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: FG_GCSSR
+    EmbeddedLinux: FG_GCSSR
+    GameCoreScarlett: FG_GCSSR
+    GameCoreXboxOne: FG_GCSSR
+    LinuxHeadlessSimulation: FG_GCSSR
+    Nintendo Switch: FG_GCSSR
+    PS4: FG_GCSSR
+    PS5: FG_GCSSR
+    QNX: FG_GCSSR
+    Standalone: FG_GCSSR
+    WebGL: FG_GCSSR
+    Windows Store Apps: FG_GCSSR
+    XboxOne: FG_GCSSR
+    iPhone: FG_GCSSR
+    tvOS: FG_GCSSR
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

@@ -15,26 +15,20 @@ public class ClipCreation : MonoBehaviour
     public string clipName = "";
     void Start()
     {
-        emptyState = new AnimatorState[animationClip.Length];
+        animationClip = new AnimationClip[2];
+        emptyState = new AnimatorState[2];
+
         Anim = GetComponent<Animator>();
         AddEmptyStates();
         SetupTransitions();
     }
-
 
     private void AddEmptyStates()
     {
         ac = Anim.runtimeAnimatorController as AnimatorController;
         stateMachine = ac.layers[0].stateMachine;
 
-        string[] clipNames; //= { "Armature_Extracted motion_Armature", "HipHopDancing", "Idle"};
-        clipNames = new string[animationClip.Length];
-
-        for(int  i = 0; i < animationClip.Length; i++)
-        {
-            clipNames[i] = animationClip[i].name;
-        }
-
+        string[] clipNames = { "Armature_Extracted motion_Armature", "HipHopDancing" };
         AnimationClip[] animationClips = new AnimationClip[clipNames.Length];
 
         for (int i = 0; i < clipNames.Length; i++)
