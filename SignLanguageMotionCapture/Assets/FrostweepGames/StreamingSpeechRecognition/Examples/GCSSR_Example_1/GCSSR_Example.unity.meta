@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fcb1fc02d0132054d8fa9129bd540ced
+timeCreated: 1479331155
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115172
+  packageName: Streaming Speech Recognition using Google Cloud [VR\AR\Mobile\Desktop]
+    Pro
+  packageVersion: 1.0.3
+  assetPath: Assets/FrostweepGames/StreamingSpeechRecognition/Examples/GCSSR_Example_1/GCSSR_Example.unity
+  uploadId: 551159

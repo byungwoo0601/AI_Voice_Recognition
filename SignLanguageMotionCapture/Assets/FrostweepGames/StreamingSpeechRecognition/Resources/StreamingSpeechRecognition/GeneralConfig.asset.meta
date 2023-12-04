@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ec20cc4f5971aed42a9db4a86543e82f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115172
+  packageName: Streaming Speech Recognition using Google Cloud [VR\AR\Mobile\Desktop]
+    Pro
+  packageVersion: 1.0.3
+  assetPath: Assets/FrostweepGames/StreamingSpeechRecognition/Resources/StreamingSpeechRecognition/GeneralConfig.asset
+  uploadId: 551159

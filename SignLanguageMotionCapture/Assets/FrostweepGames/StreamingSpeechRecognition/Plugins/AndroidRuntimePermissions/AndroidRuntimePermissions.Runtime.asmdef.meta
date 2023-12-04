@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3caf90d9f0ecf444e865b5fbaa0930af
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115172
+  packageName: Streaming Speech Recognition using Google Cloud [VR\AR\Mobile\Desktop]
+    Pro
+  packageVersion: 1.0.3
+  assetPath: Assets/FrostweepGames/StreamingSpeechRecognition/Plugins/AndroidRuntimePermissions/AndroidRuntimePermissions.Runtime.asmdef
+  uploadId: 551159

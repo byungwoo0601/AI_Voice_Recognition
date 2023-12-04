@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1d9d82e9a34ad0448a9c08a48ff8663d
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115172
+  packageName: Streaming Speech Recognition using Google Cloud [VR\AR\Mobile\Desktop]
+    Pro
+  packageVersion: 1.0.3
+  assetPath: Assets/FrostweepGames/StreamingSpeechRecognition/Plugins/Google/Google.Api.Gax.xml
+  uploadId: 551159
