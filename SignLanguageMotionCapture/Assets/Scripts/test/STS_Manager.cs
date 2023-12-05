@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Google.Cloud.Speech.V1;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 {
@@ -12,21 +13,34 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 		private GCStreamingSpeechRecognition_ _speechRecognition;
 
-		public Button RecordButton_1,
-						RecordButton_2,
-							DeleteButton,
-								DuplicationButton;
+		[Header("Buttons")]
+		public Button RecordButton_1;
+		public Button RecordButton_2;
+		public Button DeleteButton;
+		public Button DuplicationButton;
+		public Button EditButton;
 
-		public GameObject Clicked_Image,
-							prefab,
-								parent;
+		[Header("Prefabs")]
+		public GameObject Text_prefab;
+		public GameObject InputField_prefab;
 
+		[Header("GameObject")]
+		public GameObject Clicked_Image;
+		public GameObject Text_parent;
+		public GameObject InputField_parent;
+
+		[Header("Text")]
 		public Text _resultText;
 
+		[Header("ScrollRect")]
 		public ScrollRect scrollRect;
 
-		public float voiceDetectionThreshold = 0.02f;
+		[Header("TMP_InputField")]
+		public TMP_InputField inputField;
 
+		private float voiceDetectionThreshold = 0.02f;
+
+		[Header("Test")]
 		public string temp_Text;
 		public string get_Text;
 		public int count;
@@ -48,6 +62,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_2.onClick.AddListener(StopRecordButtonOnClickHandler);
 			DeleteButton.onClick.AddListener(DeleteButtonOnClickHandler);
 			DuplicationButton.onClick.AddListener(DuplicationButtonOnClickEventHandler);
+			EditButton.onClick.AddListener(EditButtonOnClickHandler);
 
 			_speechRecognition.SetMicrophoneDevice(_speechRecognition.GetMicrophoneDevices()[0]);
 		}
@@ -56,6 +71,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			_speechRecognition.InterimResultDetectedEvent -= InterimResultDetectedEventHandler;
 			_speechRecognition.FinalResultDetectedEvent -= FinalResultDetectedEventHandler;
 		}
+		private void EditButtonOnClickHandler()
+        {
+
+        }
 		private void DeleteButtonOnClickHandler()
         {
 			if(Clicked_Image==null)
@@ -69,7 +88,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		{
 			if (_resultText == null)
 			{
-				Instantiate(prefab, parent.GetComponent<Transform>());
+				Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
 				Debug.Log("입력될 텍스트 오브젝트가 없어서 새로운 오브젝트를 생성하였습니다.");
 			}
 
@@ -108,10 +127,12 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_1.gameObject.SetActive(true);
 			RecordButton_2.gameObject.SetActive(false);
 
-			Instantiate(prefab, parent.GetComponent<Transform>());
 			count++;
-			_resultText = parent.GetComponent<Transform>().GetChild(count-1).GetComponentInChildren<Text>();
-        }
+
+			pushInputField(_resultText.text);
+			DuplicationObject();
+			StringEmpty();
+		}
 		private void StreamingRecognitionStartedEventHandler()
 		{
 			RecordButton_2.interactable = true;
@@ -119,7 +140,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		}
 		private void DuplicationButtonOnClickEventHandler()
 		{
-			Instantiate(prefab, parent.GetComponent<Transform>());
+			Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
+			count++;
+			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
+			_resultText.text = string.Empty;
 		}
 		private void StreamingRecognitionFailedEventHandler(string error)
 		{
@@ -144,6 +168,20 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			_resultText.text = $"{alternative.Transcript}";
 			
 			scrollRect.verticalNormalizedPosition = 0f;
+		}
+		private void DuplicationObject()
+		{
+			Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
+			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();			
+		}
+		private void StringEmpty()
+        {
+			_resultText.text = string.Empty;
+		}
+		private void pushInputField(string text)
+        {
+			inputField.text = text;
+			Instantiate(InputField_prefab, InputField_parent.GetComponent<Transform>());
 		}
 	}
 }
