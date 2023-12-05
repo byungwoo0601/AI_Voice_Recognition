@@ -13,7 +13,7 @@ public class Click_Manager : MonoBehaviour,IPointerClickHandler,IPointerEnterHan
     {
         instance = this;
         childText.text = string.Empty;
-        FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples.STS_Manager.instance._resultText = childText;
+        //FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples.STS_Manager.instance._resultText = childText;
     }
     public void OnPointerClick(PointerEventData data) //마우스 버튼 클릭이 완료 되었을 때(눌렀다 땠을 때)
     {

@@ -1550,6 +1550,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48a621cb5830014eb83ae753c90c9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1360437597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2392038947720267760, guid: 38a4db94c8b1b8843aa1899780a58d34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1955638539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1395989199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,7 +1692,7 @@ MonoBehaviour:
   Clicked_Image: {fileID: 0}
   prefab: {fileID: 4900138150400812517, guid: 38a4db94c8b1b8843aa1899780a58d34, type: 3}
   parent: {fileID: 1263561311}
-  _resultText: {fileID: 0}
+  _resultText: {fileID: 1360437597}
   scrollRect: {fileID: 1960509704}
   voiceDetectionThreshold: 0.02
   temp_Text: 
