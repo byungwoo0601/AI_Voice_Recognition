@@ -12,9 +12,6 @@ public class Click_Manager : MonoBehaviour,IPointerClickHandler,IPointerEnterHan
     private void Awake()
     {
         instance = this;
-    }
-    private void Start()
-    {
         childText.text = string.Empty;
         FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples.STS_Manager.instance._resultText = childText;
     }
@@ -25,10 +22,18 @@ public class Click_Manager : MonoBehaviour,IPointerClickHandler,IPointerEnterHan
     }
     public void OnPointerEnter(PointerEventData data) //마우스 버튼이 해당 오브젝트 위에 올라갔을 때
     {
+        if (gameObject.GetComponentInChildren<Text>().text == string.Empty)
+        {
+            return;
+        }
         gameObject.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
     }
     public void OnPointerExit(PointerEventData data) //마우스 버튼이 해당 오브젝트 위에서 나갈 때 작동
     {
+        if (gameObject.GetComponentInChildren<Text>().text == string.Empty)
+        {
+            return;
+        }
         gameObject.GetComponent<Image>().color = new Color32(143, 143, 143, 255);
     }
 }

@@ -14,7 +14,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 		public Button RecordButton_1,
 						RecordButton_2,
-							DeleteButton;
+							DeleteButton,
+								DuplicationButton;
 
 		public GameObject Clicked_Image,
 							prefab,
@@ -46,6 +47,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_1.onClick.AddListener(StartRecordButtonOnClickHandler);
 			RecordButton_2.onClick.AddListener(StopRecordButtonOnClickHandler);
 			DeleteButton.onClick.AddListener(DeleteButtonOnClickHandler);
+			DuplicationButton.onClick.AddListener(DuplicationButtonOnClickEventHandler);
 
 			_speechRecognition.SetMicrophoneDevice(_speechRecognition.GetMicrophoneDevices()[0]);
 		}
@@ -114,7 +116,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_2.interactable = true;
 			RecordButton_1.interactable = false;
 		}
-
+		private void DuplicationButtonOnClickEventHandler()
+		{
+			Instantiate(prefab, parent.GetComponent<Transform>());
+		}
 		private void StreamingRecognitionFailedEventHandler(string error)
 		{
 			_resultText.text = $"<color=red>Start record Failed due to: {error}.</color>";
