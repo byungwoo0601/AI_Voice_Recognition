@@ -110,6 +110,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 			Instantiate(prefab, parent.GetComponent<Transform>());
 			count++;
+			_resultText = parent.GetComponent<Transform>().GetChild(count-1).GetComponentInChildren<Text>();
         }
 		private void StreamingRecognitionStartedEventHandler()
 		{
