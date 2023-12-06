@@ -19,6 +19,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		public Button DeleteButton;
 		public Button TestButton;
 		public Button EditButton;
+		public Button EditStopButton;
 
 		[Header("Prefabs")]
 		public GameObject Text_prefab;
@@ -37,6 +38,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 		[Header("ScrollRect")]
 		public ScrollRect scrollRect;
+		public ScrollRect scrollRect_Input;
 
 		[Header("Test")]
 		public string temp_Text;
@@ -51,6 +53,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		private void Awake()
         {
 			instance = this;
+			Text_List.Add(_resultText);
+			InputField_List.Add(inputField);
 		}
         private void Start()
 		{
@@ -67,6 +71,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			DeleteButton.onClick.AddListener(DeleteButtonOnClickHandler);
 			TestButton.onClick.AddListener(TestButtonOnClickEventHandler);
 			EditButton.onClick.AddListener(EditButtonOnClickHandler);
+			EditStopButton.onClick.AddListener(EditStopButtonOnClickHandler);
 
 			_speechRecognition.SetMicrophoneDevice(_speechRecognition.GetMicrophoneDevices()[0]);
 		}
@@ -76,12 +81,30 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			_speechRecognition.FinalResultDetectedEvent -= FinalResultDetectedEventHandler;
 		}
 		private void EditButtonOnClickHandler()
-        {
+		{
+			scrollRect.gameObject.SetActive(false);
+			scrollRect_Input.gameObject.SetActive(true);
 
-        }
+			EditButton.gameObject.SetActive(false);
+			EditStopButton.gameObject.SetActive(true);
+		}
+		private void EditStopButtonOnClickHandler()
+		{
+			int index = Text_parent.transform.childCount;
+			for (int i = 0; i < index; i++) 
+            {
+				Text_parent.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = InputField_parent.transform.GetChild(i).GetComponent<TMP_InputField>().text; 
+            }
+
+			scrollRect_Input.gameObject.SetActive(false);
+			scrollRect.gameObject.SetActive(true);
+
+			EditStopButton.gameObject.SetActive(false);
+			EditButton.gameObject.SetActive(true);
+		}
 		private void DeleteButtonOnClickHandler()
         {
-			if(Clicked_Image==null)
+			if (Clicked_Image == null)
 			{
 				Debug.Log("오브젝트 선택 안 됐습니다.");
 			}
@@ -146,19 +169,23 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		{
             Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
             count++;
-            _resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
-            _resultText.text = string.Empty;
-            //if(test_1.activeSelf == true)
-            //         {
-            //	test_1.SetActive(false);
-            //	test_2.SetActive(true);
-            //}
-            //else if(test_2.activeSelf == true)
-            //{
-            //	test_1.SetActive(true);
-            //	test_2.SetActive(false);
-            //}
-        }
+			Debug.Log(Text_List.Count + "리스트 길이");
+			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
+			Text_List.Add(_resultText); //test
+			_resultText.text = string.Empty;
+			int index = Text_List.IndexOf(Clicked_Image.GetComponentInChildren<Text>());
+			Debug.Log(index+"인덱스");
+			//if(test_1.activeSelf == true)
+			//         {
+			//	test_1.SetActive(false);
+			//	test_2.SetActive(true);
+			//}
+			//else if(test_2.activeSelf == true)
+			//{
+			//	test_1.SetActive(true);
+			//	test_2.SetActive(false);
+			//}
+		}
 		private void StreamingRecognitionFailedEventHandler(string error)
 		{
 			_resultText.text = $"<color=red>Start record Failed due to: {error}.</color>";

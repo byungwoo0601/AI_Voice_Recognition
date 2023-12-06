@@ -21,7 +21,11 @@ public class Click_Manager : MonoBehaviour,IPointerClickHandler,IPointerEnterHan
     }
     public void OnPointerClick(PointerEventData data) //마우스 버튼 클릭이 완료 되었을 때(눌렀다 땠을 때)
     {
-        if(FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples.STS_Manager.instance.Clicked_Image != null)
+        if (gameObject.GetComponentInChildren<Text>().text == string.Empty)
+        {
+            return;
+        }
+        if (FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples.STS_Manager.instance.Clicked_Image != null)
         {
             FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples.STS_Manager.instance.Clicked_Image.GetComponent<Image>().color = new Color32(143, 143, 143, 255);
         }
