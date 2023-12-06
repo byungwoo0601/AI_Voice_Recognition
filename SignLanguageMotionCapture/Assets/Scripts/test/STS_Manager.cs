@@ -38,8 +38,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		[Header("ScrollRect")]
 		public ScrollRect scrollRect;
 
-		private float voiceDetectionThreshold = 0.02f;
-
 		[Header("Test")]
 		public string temp_Text;
 		public string get_Text;
@@ -146,21 +144,21 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		}
 		private void TestButtonOnClickEventHandler()
 		{
-			//Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
-			//count++;
-			//_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
-			//_resultText.text = string.Empty;
-			if(test_1.activeSelf == true)
-            {
-				test_1.SetActive(false);
-				test_2.SetActive(true);
-			}
-			else if(test_2.activeSelf == true)
-			{
-				test_1.SetActive(true);
-				test_2.SetActive(false);
-			}
-		}
+            Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
+            count++;
+            _resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
+            _resultText.text = string.Empty;
+            //if(test_1.activeSelf == true)
+            //         {
+            //	test_1.SetActive(false);
+            //	test_2.SetActive(true);
+            //}
+            //else if(test_2.activeSelf == true)
+            //{
+            //	test_1.SetActive(true);
+            //	test_2.SetActive(false);
+            //}
+        }
 		private void StreamingRecognitionFailedEventHandler(string error)
 		{
 			_resultText.text = $"<color=red>Start record Failed due to: {error}.</color>";
