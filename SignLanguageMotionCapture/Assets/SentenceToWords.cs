@@ -10,6 +10,7 @@ public class SentenceToWords : MonoBehaviour
 {
     Text ResultText;
 
+    public static List<string> words;
     private void Awake()
     {
         ResultText = GetComponent<Text>();
@@ -17,10 +18,9 @@ public class SentenceToWords : MonoBehaviour
 
     public void Extraction()
     {
-
         Debug.Log(ResultText.text);
 
-        List<string> words = SplitIntoWords(ResultText.text);
+        words = RemoveJosa(SplitIntoWords(ResultText.text));
         foreach (string word in words)
         {
             Debug.Log(word);
@@ -28,7 +28,7 @@ public class SentenceToWords : MonoBehaviour
     }
 
 
-    public static List<string> SplitIntoWords(string input)
+    public List<string> SplitIntoWords(string input)
     {
         List<string> wordList = new List<string>();
         foreach (Match match in Regex.Matches(input, @"\b[\w°¡-ÆR']*\b"))
@@ -38,7 +38,35 @@ public class SentenceToWords : MonoBehaviour
                 wordList.Add(match.Value);
             }
         }
+
         return wordList;
     }
+
+    private List<string> RemoveJosa(List<string> words)
+    {
+        List<string> josaList = new List<string>()
+    {
+        "Àº", "´Â", "ÀÌ", "°¡", "ÀÇ", "À»", "¸¦", "¿Í", "°ú", "À¸·Î", "·Î",
+        "¿¡°Ô", "¿¡°Ô¼­", "¿¡¼­", "¿¡", "¿¡´Â", "À¸·Î´Â", "·Î´Â", "¿Í´Â", "°ú´Â"
+        // ÇÊ¿äÇÑ Á¶»ç¸¦ Ãß°¡ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
+    };
+
+        for (int i = 0; i < words.Count; i++)
+        {
+            foreach (var josa in josaList)
+            {
+                if (words[i].EndsWith(josa))
+                {
+                    words[i] = words[i].Substring(0, words[i].Length - josa.Length);
+                    break;
+                }
+            }
+        }
+
+        return words;
+    }
+
+
+
 
 }
