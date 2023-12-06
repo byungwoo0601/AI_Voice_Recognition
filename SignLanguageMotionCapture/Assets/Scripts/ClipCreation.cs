@@ -16,10 +16,10 @@ public class ClipCreation : MonoBehaviour
 
     public string stateName = "";
     public string clipName = "";
-    void Start()
+    public void Btn()
     {
-        animationClip = new AnimationClip[2];
-        emptyState = new AnimatorState[2];
+        animationClip = new AnimationClip[SentenceToWords.words.Count];
+        emptyState = new AnimatorState[SentenceToWords.words.Count];
 
         Anim = GetComponent<Animator>();
         AddEmptyStates();
@@ -33,9 +33,9 @@ public class ClipCreation : MonoBehaviour
 
         List<string> words = SentenceToWords.words;
 
-        AnimationClip[] animationClips = new AnimationClip[words.Count-1];
+        AnimationClip[] animationClips = new AnimationClip[words.Count];
 
-        for (int i = 0; i < words.Count-1; i++)
+        for (int i = 0; i < words.Count; i++)
         {
             animationClips[i] = Resources.Load(words[i]) as AnimationClip;
 
