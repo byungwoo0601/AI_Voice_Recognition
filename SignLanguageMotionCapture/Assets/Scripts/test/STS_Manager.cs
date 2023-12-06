@@ -17,7 +17,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		public Button RecordButton_1;
 		public Button RecordButton_2;
 		public Button DeleteButton;
-		public Button DuplicationButton;
+		public Button TestButton;
 		public Button EditButton;
 
 		[Header("Prefabs")]
@@ -32,11 +32,11 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		[Header("Text")]
 		public Text _resultText;
 
-		[Header("ScrollRect")]
-		public ScrollRect scrollRect;
-
 		[Header("TMP_InputField")]
 		public TMP_InputField inputField;
+
+		[Header("ScrollRect")]
+		public ScrollRect scrollRect;
 
 		private float voiceDetectionThreshold = 0.02f;
 
@@ -44,6 +44,12 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		public string temp_Text;
 		public string get_Text;
 		public int count;
+		public GameObject test_1;
+		public GameObject test_2;
+
+		List<Text> Text_List = new List<Text>();
+		List<TMP_InputField> InputField_List = new List<TMP_InputField>();
+
 		private void Awake()
         {
 			instance = this;
@@ -61,7 +67,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_1.onClick.AddListener(StartRecordButtonOnClickHandler);
 			RecordButton_2.onClick.AddListener(StopRecordButtonOnClickHandler);
 			DeleteButton.onClick.AddListener(DeleteButtonOnClickHandler);
-			DuplicationButton.onClick.AddListener(DuplicationButtonOnClickEventHandler);
+			TestButton.onClick.AddListener(TestButtonOnClickEventHandler);
 			EditButton.onClick.AddListener(EditButtonOnClickHandler);
 
 			_speechRecognition.SetMicrophoneDevice(_speechRecognition.GetMicrophoneDevices()[0]);
@@ -138,12 +144,22 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			RecordButton_2.interactable = true;
 			RecordButton_1.interactable = false;
 		}
-		private void DuplicationButtonOnClickEventHandler()
+		private void TestButtonOnClickEventHandler()
 		{
-			Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
-			count++;
-			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
-			_resultText.text = string.Empty;
+			//Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
+			//count++;
+			//_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
+			//_resultText.text = string.Empty;
+			if(test_1.activeSelf == true)
+            {
+				test_1.SetActive(false);
+				test_2.SetActive(true);
+			}
+			else if(test_2.activeSelf == true)
+			{
+				test_1.SetActive(true);
+				test_2.SetActive(false);
+			}
 		}
 		private void StreamingRecognitionFailedEventHandler(string error)
 		{
@@ -172,7 +188,9 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		private void DuplicationObject()
 		{
 			Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
-			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();			
+			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
+			Text_List.Add(_resultText);
+			Debug.Log($"{Text_List.Count} 텍스트 리스트 숫자");
 		}
 		private void StringEmpty()
         {
@@ -182,6 +200,9 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
         {
 			inputField.text = text;
 			Instantiate(InputField_prefab, InputField_parent.GetComponent<Transform>());
+			inputField = InputField_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<TMP_InputField>();
+			InputField_List.Add(inputField);
+			Debug.Log($"{InputField_List.Count} 인 풋 텍스트 리스트 숫자");
 		}
 	}
 }

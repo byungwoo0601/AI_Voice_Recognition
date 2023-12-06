@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "New Text\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9eaf4a7a30893043ab104985dc6ee4d, type: 2}
   m_sharedMaterial: {fileID: -1325310950495853834, guid: a9eaf4a7a30893043ab104985dc6ee4d,
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: -15
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1861703180431978899
 RectTransform:
   m_ObjectHideFlags: 0
