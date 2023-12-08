@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.80057, g: 324.3278, b: 429.24698, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -639,6 +639,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3692703482147846387, guid: 50d23d3dd976a7449acc20c9d336af58,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692703482147846387, guid: 50d23d3dd976a7449acc20c9d336af58,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692703482147846387, guid: 50d23d3dd976a7449acc20c9d336af58,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3874457190129985260, guid: 50d23d3dd976a7449acc20c9d336af58,
         type: 3}
       propertyPath: m_Pivot.x
@@ -927,6 +942,21 @@ PrefabInstance:
     - target: {fileID: 7288845776459094139, guid: 50d23d3dd976a7449acc20c9d336af58,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571121909317823916, guid: 50d23d3dd976a7449acc20c9d336af58,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571121909317823916, guid: 50d23d3dd976a7449acc20c9d336af58,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571121909317823916, guid: 50d23d3dd976a7449acc20c9d336af58,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7798755497236854441, guid: 50d23d3dd976a7449acc20c9d336af58,
