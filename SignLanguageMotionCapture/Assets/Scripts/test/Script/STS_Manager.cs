@@ -44,8 +44,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		public string temp_Text;
 		public string get_Text;
 		public int count;
-		public GameObject test_1;
-		public GameObject test_2;
 
 		List<Text> Text_List = new List<Text>();
 		List<TMP_InputField> InputField_List = new List<TMP_InputField>();
@@ -169,22 +167,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		{
             Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
             count++;
-			Debug.Log(Text_List.Count + "리스트 길이");
 			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
 			Text_List.Add(_resultText); //test
 			_resultText.text = string.Empty;
 			int index = Text_List.IndexOf(Clicked_Image.GetComponentInChildren<Text>());
-			Debug.Log(index+"인덱스");
-			//if(test_1.activeSelf == true)
-			//         {
-			//	test_1.SetActive(false);
-			//	test_2.SetActive(true);
-			//}
-			//else if(test_2.activeSelf == true)
-			//{
-			//	test_1.SetActive(true);
-			//	test_2.SetActive(false);
-			//}
 		}
 		private void StreamingRecognitionFailedEventHandler(string error)
 		{
@@ -215,7 +201,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			Instantiate(Text_prefab, Text_parent.GetComponent<Transform>());
 			_resultText = Text_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<Text>();
 			Text_List.Add(_resultText);
-			Debug.Log($"{Text_List.Count} 텍스트 리스트 숫자");
 		}
 		private void StringEmpty()
         {
@@ -227,7 +212,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			Instantiate(InputField_prefab, InputField_parent.GetComponent<Transform>());
 			inputField = InputField_parent.GetComponent<Transform>().GetChild(count - 1).GetComponentInChildren<TMP_InputField>();
 			InputField_List.Add(inputField);
-			Debug.Log($"{InputField_List.Count} 인 풋 텍스트 리스트 숫자");
 		}
 	}
 }
