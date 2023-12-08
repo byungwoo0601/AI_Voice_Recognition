@@ -156,7 +156,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 			pushInputField(_resultText.text);
 			DuplicationObject();
-			StringEmpty();
+			
+			Invoke("StringEmpty", 0.3f);
 		}
 		private void StreamingRecognitionStartedEventHandler()
 		{
