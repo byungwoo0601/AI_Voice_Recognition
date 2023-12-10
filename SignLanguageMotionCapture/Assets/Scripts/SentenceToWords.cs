@@ -18,12 +18,12 @@ public class SentenceToWords : MonoBehaviour
 
     public void Extraction()
     {
-        Debug.Log(ResultText.text);
+        //Debug.Log(ResultText.text);
 
         words = RemoveJosa(SplitIntoWords(ResultText.text));
         foreach (string word in words)
         {
-            Debug.Log(word);
+            //Debug.Log(word);
         }
     }
 

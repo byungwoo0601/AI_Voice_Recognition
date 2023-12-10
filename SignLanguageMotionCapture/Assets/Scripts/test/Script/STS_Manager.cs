@@ -26,6 +26,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		public GameObject InputField_prefab;
 
 		[Header("GameObject")]
+		public GameObject New_Image;
 		public GameObject Clicked_Image;
 		public GameObject Text_parent;
 		public GameObject InputField_parent;
@@ -148,8 +149,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 			pushInputField(_resultText.text);
 			DuplicationObject();
-			
-			Invoke("StringEmpty", 0.3f);
+
+            Invoke("StringEmpty", 0.3f);
+			Invoke("newImageOn", 0.4f);
+
 		}
 		private void StreamingRecognitionStartedEventHandler() // stt입력 시작 이벤트 핸들러
 		{
@@ -190,6 +193,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		private void DuplicationObject() //다음 입력될 오브젝트 생성(복제)
 		{
 			Instantiate(Text_prefab, Text_parent.transform);
+			New_Image = Text_parent.transform.GetChild(count - 1).gameObject;
 			_resultText = Text_parent.transform.GetChild(count - 1).GetComponentInChildren<Text>();
 		}
 		private void StringEmpty() //text 비우기
@@ -202,5 +206,9 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 			Instantiate(InputField_prefab, InputField_parent.transform);
 			inputField = InputField_parent.transform.GetChild(count - 1).GetComponentInChildren<TMP_InputField>();
 		}
+		private void newImageOn()
+        {
+			New_Image.SetActive(true);
+        }
 	}
 }
