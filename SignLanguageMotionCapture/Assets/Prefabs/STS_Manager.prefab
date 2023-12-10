@@ -64,5 +64,3 @@ MonoBehaviour:
   temp_Text: 
   get_Text: 
   count: 0
-  test_1: {fileID: 0}
-  test_2: {fileID: 0}

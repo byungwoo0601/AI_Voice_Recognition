@@ -41,7 +41,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 		public ScrollRect scrollRect_Input;
 
 		[Header("Test")]
-		public string temp_Text;
 		public string get_Text;
 		public int count;
 
@@ -137,8 +136,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
 
 			RecordButton_2.gameObject.SetActive(true);
 			RecordButton_1.gameObject.SetActive(false);
-
-			temp_Text = _resultText.text;
 		}
 		private async void StopRecordButtonOnClickHandler() // stt입력 종료 버튼 온 클릭 핸들러
 		{
