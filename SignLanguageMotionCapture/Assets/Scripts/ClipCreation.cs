@@ -6,45 +6,53 @@ using UnityEngine.UI;
 
 public class ClipCreation : MonoBehaviour
 {
-    Animator Anim;
-    AnimatorController ac;
-    public AnimationClip[] animationClip;
-    public AnimatorState[] emptyState;
+    Animator anim;
     AnimatorStateMachine stateMachine;
+    AnimatorState[] emptyState;
+    Text resultText;
+    int num = 0;
 
-    public Text resultText;
+    public AnimationClip defaultClip;
+    public GameObject Content_text;
 
-    public string stateName = "";
-    public string clipName = "";
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     public void Btn()
     {
-        animationClip = new AnimationClip[SentenceToWords.words.Count];
-        emptyState = new AnimatorState[SentenceToWords.words.Count];
-
-        Anim = GetComponent<Animator>();
+        InitializeEmptyStates();
+        ApplyText();
         AddEmptyStates();
         SetupTransitions();
     }
 
+    private void InitializeEmptyStates()
+    {
+        emptyState = new AnimatorState[SentenceToWords.words.Count + 1];
+    }
+
     private void AddEmptyStates()
     {
-        ac = Anim.runtimeAnimatorController as AnimatorController;
-        stateMachine = ac.layers[0].stateMachine;
+        var ac = anim.runtimeAnimatorController as AnimatorController;
 
-        List<string> words = SentenceToWords.words;
-
-        AnimationClip[] animationClips = new AnimationClip[words.Count];
-
-        for (int i = 0; i < words.Count; i++)
+        if (ac != null)
         {
-            animationClips[i] = Resources.Load(words[i]) as AnimationClip;
+            stateMachine = ac.layers[0].stateMachine;
 
-            emptyState[i] = stateMachine.AddState(words[i]);
-            emptyState[i].motion = animationClips[i];
+            List<string> words = SentenceToWords.words;
+
+            for (int i = 0; i < words.Count + 1; i++)
+            {
+                AnimationClip clip = (i != words.Count) ? Resources.Load(words[i]) as AnimationClip : defaultClip;
+                emptyState[i] = stateMachine.AddState((i != words.Count) ? words[i] : defaultClip.name);
+                emptyState[i].motion = clip;
+            }
         }
     }
 
-    void SetupTransitions()
+    private void SetupTransitions()
     {
         for (int i = 0; i < emptyState.Length - 1; i++)
         {
@@ -53,10 +61,12 @@ public class ClipCreation : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    private void ApplyText()
     {
-        RemoveEmptyState();
+        resultText = Content_text.transform.GetChild(num).GetChild(0).GetComponent<Text>();
+        num++;
     }
+
 
     private void RemoveEmptyState()
     {
@@ -64,5 +74,10 @@ public class ClipCreation : MonoBehaviour
         {
             stateMachine.RemoveState(state);
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        RemoveEmptyState();
     }
 }
