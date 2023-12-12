@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition.Examples
+namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition
 {
 	public class STS_Manager : MonoBehaviour
 	{
