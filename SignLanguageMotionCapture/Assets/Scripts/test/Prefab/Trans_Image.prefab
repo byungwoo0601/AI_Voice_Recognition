@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 6026796289783615298}
   - component: {fileID: 2392038947720267760}
   - component: {fileID: 6840318879080561050}
-  - component: {fileID: 5129699869834217202}
+  - component: {fileID: 6129233337286729652}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &5129699869834217202
+--- !u!114 &6129233337286729652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
