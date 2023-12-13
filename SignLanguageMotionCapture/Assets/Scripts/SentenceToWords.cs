@@ -15,12 +15,11 @@ public class SentenceToWords : MonoBehaviour
 
     private void Awake()
     {
-        ResultText = GetComponent<Text>();
+        ResultText = GetComponent<Text>();  // ÇöÀç ½ºÅ©¸³Æ®°¡ ¿¬°áµÈ °´Ã¼ÀÇ Text ÄÄÆ÷³ÍÆ®¿¡ ´ëÇÑ ÂüÁ¶¸¦ È¹µæ
     }
 
     public void Extraction()
     {
-        // Debug.Log(ResultText.text);
         // Extraction ¸Þ¼­µå¿¡¼­ SplitIntoWords¿Í RemoveJosa¸¦ È£ÃâÇÏ¿© ´Ü¾î ÃßÃâ
         words = RemoveJosa(SplitIntoWords(ResultText.text));
     }
@@ -29,6 +28,8 @@ public class SentenceToWords : MonoBehaviour
     private List<string> SplitIntoWords(string input)
     {
         List<string> wordList = new List<string>();
+
+        // Á¤±Ô½Ä ÆÐÅÏÀ» »ç¿ëÇÏ¿© ¹®ÀåÀ» ´Ü¾î·Î ³ª´®
         foreach (Match match in Regex.Matches(input, @"\b[\w°¡-ÆR']*\b"))
         {
             if (!string.IsNullOrEmpty(match.Value))
@@ -36,7 +37,7 @@ public class SentenceToWords : MonoBehaviour
                 wordList.Add(match.Value);
             }
         }
-        return wordList;
+        return wordList;  // ´Ü¾î ¸ñ·Ï ¹ÝÈ¯
     }
 
     // Á¶»ç¸¦ Á¦°ÅÇÏ´Â ¸Þ¼­µå
@@ -49,10 +50,13 @@ public class SentenceToWords : MonoBehaviour
             // ÇÊ¿äÇÑ Á¶»ç¸¦ Ãß°¡ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.
         };
 
+        // ¸ðµç ´Ü¾î¿¡ ´ëÇØ ¹Ýº¹
         for (int i = 0; i < words.Count; i++)
         {
+            // °¢ ´Ü¾î¿¡ ´ëÇØ Á¤ÀÇµÈ Á¶»ç ¸®½ºÆ®¸¦ È®ÀÎ
             foreach (var josa in josaList)
             {
+                // ´Ü¾î°¡ ÇØ´ç Á¶»ç·Î ³¡³ª¸é Á¶»ç¸¦ Á¦°ÅÇÏ°í ¹Ýº¹¹® Á¾·á
                 if (words[i].EndsWith(josa))
                 {
                     words[i] = words[i].Substring(0, words[i].Length - josa.Length);
@@ -61,6 +65,6 @@ public class SentenceToWords : MonoBehaviour
             }
         }
 
-        return words;
+        return words;  // Á¶»ç°¡ Á¦°ÅµÈ ´Ü¾î ¸ñ·Ï ¹ÝÈ¯
     }
 }
