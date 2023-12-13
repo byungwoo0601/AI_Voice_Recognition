@@ -14,25 +14,26 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition
 		private GCStreamingSpeechRecognition_ _speechRecognition;
 
 		[Header("Buttons")]
-		public Button RecordButton_1;
-		public Button RecordButton_2;
-		public Button DeleteButton;
-		public Button TestButton;
-		public Button EditButton;
-		public Button EditStopButton;
+		public Button RecordButton_1; //음성 인식 시작 버튼
+		public Button RecordButton_2; //음성 인식 종료 버튼
+		public Button DeleteButton; //텍스트로 변환된 데이터 제거 버튼
+		public Button TestButton; //테스트 버튼 => 추후에 애니메이션 재생 버튼으로 수정 예정
+		public Button EditButton; //변환된 텍스트를 직접 수정할 수 있는 수정 모드로 전환되는 버튼
+		public Button EditStopButton; //수정 모드 종료 버튼
 
 		[Header("Prefabs")]
-		public GameObject Text_prefab;
-		public GameObject InputField_prefab;
+		public GameObject Text_prefab; //텍스트로 변환된 데이터가 입력될 오브젝트
+		public GameObject InputField_prefab; //수정 모드에 사용될 오브젝트
 
 		[Header("GameObject")]
-		public GameObject New_Image;
-		public GameObject Clicked_Image;
-		public GameObject Text_parent;
-		public GameObject InputField_parent;
+		public GameObject New_Image; //음성 인식이 종료되었을 때 새롭게 입력될 데이터가 생성되는데 그 데이터가 New_Image에 할당된다
+		public GameObject Clicked_Image; //클릭된 오브젝트가 할당된다
+		public GameObject Text_parent; //음성 인식이 종료되었을 때 새롭게 입력될 데이터가 생성되는데 이때 Text_parent 오브젝트의 자식으로 생성된다.
+		public GameObject InputField_parent; //음성 인식이 종료되었을 때 새롭게 입력될 데이터가 생성되는데 이때 InputField_parent 오브젝트의 자식으로 생성된다.(수정 모드)
+											 //실제로 실행 시켜보면 무슨 말인지 알아볼듯
 
 		[Header("Text")]
-		public Text _resultText;
+		public Text _resultText; //변환된 텍스트가 할당 될 변수
 
 		[Header("TMP_InputField")]
 		public TMP_InputField inputField;
@@ -42,8 +43,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition
 		public ScrollRect scrollRect_Input;
 
 		[Header("Test")]
-		public string get_Text;
-		public int count;
+		public string get_Text; //클릭된 오브젝트에서 리턴 될 텍스트
+		public int count; //텍스트가 입력될 오브젝트의 개수
 
 		private void Awake()
         {
@@ -106,12 +107,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.StreamingSpeechRecognition
         }
 		private void StartRecordButtonOnClickHandler() // stt입력 시작 버튼 온 클릭 핸들러
 		{
-			if (_resultText == null)
-			{
-				Instantiate(Text_prefab, Text_parent.transform);
-				Debug.Log("입력될 텍스트 오브젝트가 없어서 새로운 오브젝트를 생성하였습니다.");
-			}
-
 			List<List<string>> context = new List<List<string>>();
 
 			Google.Cloud.Speech.V1.SpeechContext[] contexts = new Google.Cloud.Speech.V1.SpeechContext[context.Count];
