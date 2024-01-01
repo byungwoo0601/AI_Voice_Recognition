@@ -1708,13 +1708,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4045599626148158}
   - component: {fileID: 95925701731125530}
+  - component: {fileID: 1833966410446394422}
   m_Layer: 3
   m_Name: Liam_A_withFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4045599626148158
 Transform:
   m_ObjectHideFlags: 0
@@ -1771,6 +1772,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1833966410446394422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394977724309178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c97e10304664df4baace9db97ddb512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultClip: {fileID: 7400000, guid: dffa50cfe77e0434bbfa71245b3dd529, type: 3}
+  Content_text: {fileID: 0}
 --- !u!1 &1400737451235372
 GameObject:
   m_ObjectHideFlags: 0
