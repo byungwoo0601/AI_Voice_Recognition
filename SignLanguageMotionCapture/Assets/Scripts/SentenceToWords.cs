@@ -20,6 +20,7 @@ public class SentenceToWords : MonoBehaviour
 
     public void Extraction()
     {
+        ResultText = ClipCreation.resultText;
         // Extraction 메서드에서 SplitIntoWords와 RemoveJosa를 호출하여 단어 추출
         words = RemoveJosa(SplitIntoWords(ResultText.text));
     }
