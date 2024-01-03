@@ -17,6 +17,7 @@ public class MoveMenu : MonoBehaviour
         animator.SetTrigger("SS");
 
         Invoke("characterOn", 1.8f);
+        Invoke("createState", 1.85f);
     }
 
     public void SlideTranslate()
@@ -33,6 +34,7 @@ public class MoveMenu : MonoBehaviour
 
         animator.SetTrigger("M");
         animator.SetTrigger("STM");
+
     }
 
     public void SlideTranslateToMain()
@@ -45,5 +47,9 @@ public class MoveMenu : MonoBehaviour
     public void characterOn()
     {
         character.SetActive(true);
+    }
+    public void createState()
+    {
+        Study_ClipCreation.instance.CreateState();
     }
 }

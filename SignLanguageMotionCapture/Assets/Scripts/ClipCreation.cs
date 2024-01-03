@@ -139,7 +139,5 @@ public class ClipCreation : MonoBehaviour
     private void OnApplicationQuit()
     {
         RemoveEmptyState();  // 애플리케이션이 종료될 때 생성한 빈 상태 제거
-
-
     }
 }

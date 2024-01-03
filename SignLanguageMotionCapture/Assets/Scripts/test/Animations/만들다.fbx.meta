@@ -37,8 +37,8 @@ ModelImporter:
       name: My stack
       takeName: My stack
       internalID: 7944129354165900600
-      firstFrame: 25
-      lastFrame: 72
+      firstFrame: 64
+      lastFrame: 128
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
